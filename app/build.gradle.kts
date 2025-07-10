@@ -2,15 +2,21 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+    alias(libs.plugins.kotlinx.serialization)
+    alias(libs.plugins.hilt)
+    id("kotlin-kapt")
 }
 
+hilt{
+    enableAggregatingTask = false
+}
 android {
     namespace = "com.example.leagueoflegendsapp"
     compileSdk = 36
 
     defaultConfig {
         applicationId = "com.example.leagueoflegendsapp"
-        minSdk = 24
+        minSdk = 30
         targetSdk = 36
         versionCode = 1
         versionName = "1.0"
@@ -22,8 +28,7 @@ android {
         release {
             isMinifyEnabled = false
             proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
+                getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
             )
         }
     }
@@ -49,6 +54,7 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
+    implementation(libs.androidx.lifecycle.viewmodel.navigation3.android)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -56,4 +62,19 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+    implementation(libs.kotlinx.serialization.json)
+    implementation(libs.ktor.client.core)
+    implementation(libs.ktor.client.logging)
+    implementation(libs.ktor.client.android)
+    implementation(libs.ktor.client.cio)
+    implementation(libs.ktor.serialization.kotlinx.json)
+    implementation(libs.ktor.client.content.negotiation)
+    implementation(libs.coil.compose)
+    implementation(libs.coil.network.okhttp)
+    implementation(libs.androidx.navigation3.ui)
+    implementation(libs.androidx.navigation3.runtime)
+    implementation(libs.androidx.lifecycle.viewmodel.navigation3)
+    implementation(libs.hilt)
+    kapt(libs.hiltCompiler)
+    implementation(libs.androidxHiltNavigationCompose)
 }
