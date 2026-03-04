@@ -17,6 +17,6 @@ class ExampleUnitTest {
 
     @Test
     fun onePlusOne_isCorrect() {
-        assertEquals(3, 1 + 1)
+        assertEquals(2, 1 + 1)
     }
 }
