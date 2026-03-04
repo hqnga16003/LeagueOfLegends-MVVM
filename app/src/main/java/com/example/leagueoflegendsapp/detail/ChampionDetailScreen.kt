@@ -47,14 +47,14 @@ fun ChampionDetailScreen(championName: String) {
     viewModel.get(championName)
     Scaffold { innerPadding ->
         if (champion == null) {
-            Box(Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
+            Box(Modifier.fillMaxSize().padding(innerPadding), contentAlignment = Alignment.Center) {
                 CircularProgressIndicator()
             }
         } else {
             ChampionDetailView(
                 champion, modifier = Modifier
                     .fillMaxSize()
-                    .padding()
+                    .padding(innerPadding)
             )
         }
     }
